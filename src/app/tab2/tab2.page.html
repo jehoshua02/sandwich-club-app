@@ -1,9 +1,25 @@
 <ion-header>
+
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Build a Sandwich
     </ion-title>
   </ion-toolbar>
+
+  <ion-toolbar color="primary">
+    <ion-title>
+      Total: <span>{{ total || 0 | currency }}</span>
+    </ion-title>
+    <ion-buttons slot="end" *ngIf="total > 0">
+      <span>Pay:</span>
+      <ion-button fill="clear" class="ion-float-right" [href]="venmoUrl()">
+        <img src="/assets/venmo-icon.svg" style="height: 100%; width: 30px" />
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <app-sandwich-builder (sandwichCost)="total = $event"></app-sandwich-builder>
+</ion-content>

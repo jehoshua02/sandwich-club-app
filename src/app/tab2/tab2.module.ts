@@ -4,13 +4,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
+import { SandwichBuilderModule } from '../modules/sandwich-builder/sandwich-builder.module';
 
 @NgModule({
   imports: [
-    IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: Tab2Page }])
+    IonicModule,
+    RouterModule.forChild([{ path: '', component: Tab2Page }]),
+    SandwichBuilderModule,
   ],
   declarations: [Tab2Page]
 })

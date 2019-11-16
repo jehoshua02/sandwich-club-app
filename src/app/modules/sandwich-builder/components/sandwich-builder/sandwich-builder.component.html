@@ -1,0 +1,29 @@
+<ion-grid>
+  <ion-row *ngFor="let ingredient of ingredients" class="ion-item-border">
+
+    <!-- ingredient data -->
+    <ion-col>
+      <ion-label>{{ ingredient.name }}</ion-label>
+      <div><ion-note>{{ ingredient.price | currency }} per {{ ingredient.unit }}</ion-note></div>
+    </ion-col>
+
+    <!-- cost -->
+    <ion-col size="2">
+      <ion-note *ngIf="ingredient.quantity">
+        <div ion-text-end>{{ ingredient.quantity }}</div>
+        <div ion-text-end>{{ ingredient.quantity * ingredient.price | currency }}</div>
+      </ion-note>
+    </ion-col>
+
+    <!-- controls -->
+    <ion-col size="5">
+      <ion-button size="medium" fill="clear" (click)="addIngredient(ingredient, 1)">
+          <ion-icon size="large" name="add-circle-outline" color="success"></ion-icon>
+      </ion-button>
+      <ion-button size="medium" fill="clear" (click)="addIngredient(ingredient, -1)" [disabled]="!ingredient.quantity">
+        <ion-icon size="large" name="remove-circle-outline" color="danger"></ion-icon>
+      </ion-button>
+    </ion-col>
+
+  </ion-row>
+</ion-grid>
