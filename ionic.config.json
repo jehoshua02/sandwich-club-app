@@ -1,0 +1,7 @@
+{
+  "name": "sandwich-club-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
