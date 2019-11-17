@@ -12,9 +12,8 @@
     </ion-title>
     <ion-buttons slot="end" *ngIf="total > 0" class="ion-margin-end">
       <span>Pay:</span>
-      <a class="ion-float-right" [href]="venmoUrl" class="ion-margin-start">
+      <a class="ion-float-right" [href]="venmoUrl" target="_system" class="ion-margin-start">
         <img src="/assets/venmo-icon.svg" style="height: 100%; width: 30px" />
-        <ion-ripple-effect></ion-ripple-effect>
       </a>
     </ion-buttons>
   </ion-toolbar>
