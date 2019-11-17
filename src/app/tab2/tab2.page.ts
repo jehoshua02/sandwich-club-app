@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tab2',
@@ -8,12 +9,22 @@ import { Component } from '@angular/core';
 export class Tab2Page {
   total = 0.00;
   venmoRecipient = 'jstoutenburg';
+  venmoUrl: SafeUrl;
 
-  constructor() {}
+  constructor(
+    private sanitizer: DomSanitizer
+  ) {}
 
-  venmoUrl() {
-    const url = `venmo://paycharge?recipients=${this.venmoRecipient}&amount=${this.total.toFixed(2)}&note=Sandwich+Club`;
+  buildVenmoUrl() {
+    const url = this.sanitizer.bypassSecurityTrustUrl(
+      `venmo://paycharge?recipients=${this.venmoRecipient}&amount=${this.total.toFixed(2)}&note=Sandwich+Club`
+    );
     console.log(url);
     return url;
+  }
+
+  updateTotal(total: number) {
+    this.total = total;
+    this.venmoUrl = this.buildVenmoUrl();
   }
 }

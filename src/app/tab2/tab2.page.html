@@ -10,16 +10,17 @@
     <ion-title>
       Total: <span>{{ total || 0 | currency }}</span>
     </ion-title>
-    <ion-buttons slot="end" *ngIf="total > 0">
+    <ion-buttons slot="end" *ngIf="total > 0" class="ion-margin-end">
       <span>Pay:</span>
-      <ion-button fill="clear" class="ion-float-right" [href]="venmoUrl()">
+      <a class="ion-float-right" [href]="venmoUrl" class="ion-margin-start">
         <img src="/assets/venmo-icon.svg" style="height: 100%; width: 30px" />
-      </ion-button>
+        <ion-ripple-effect></ion-ripple-effect>
+      </a>
     </ion-buttons>
   </ion-toolbar>
 
 </ion-header>
 
 <ion-content>
-  <app-sandwich-builder (sandwichCost)="total = $event"></app-sandwich-builder>
+  <app-sandwich-builder (sandwichCost)="updateTotal($event)"></app-sandwich-builder>
 </ion-content>
