@@ -9,7 +9,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start-docker": "docker run -v /Users/joshstoutenburg/projects/sandwich-club-app:/root/ionic -it beevelop/ionic bash",
+    "update-android-sdk": "$ANDROID_HOME/tools/bin/sdkmanager --update",
+    "build-android": "ionic cordova build android --prod --release",
+    "sign-apk": "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore ./platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk upload"
   },
   "private": true,
   "dependencies": {
